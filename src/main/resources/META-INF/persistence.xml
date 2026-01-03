@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
+             https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+
+    <persistence-unit name="sistema-seguimiento-pu" transaction-type="RESOURCE_LOCAL">
+        <!-- Cambiamos a Hibernate como proveedor -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- Registra las entidades -->
+        <class>com.sistema_seguimiento.model.Usuario</class>
+        <class>com.sistema_seguimiento.model.Objetivo</class>
+        <class>com.sistema_seguimiento.model.RegistroProgreso</class>
+        <class>com.sistema_seguimiento.model.Habito</class>
+        <class>com.sistema_seguimiento.model.RegistroHabito</class>
+        <class>com.sistema_seguimiento.model.TareaKanban</class>
+        <class>com.sistema_seguimiento.model.Pomodoro</class>
+
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+
+        <properties>
+            <!-- ============================================ -->
+            <!-- CONFIGURACIÓN SUPABASE (PostgreSQL Pooler)   -->
+            <!-- Pool mode: transaction                       -->
+            <!-- ============================================ -->
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://aws-1-us-east-2.pooler.supabase.com:6543/postgres?sslmode=require&amp;connectTimeout=30"/>
+            <property name="jakarta.persistence.jdbc.user" value="postgres.pofkyvcgltumwpxvuzpp"/>
+            <property name="jakarta.persistence.jdbc.password" value="G7v$kP9tL#x2Rq!M"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="hibernate.connection.provider_disables_autocommit" value="true"/>
+
+            <!-- ============================================ -->
+            <!-- CONFIGURACIÓN COMÚN                          -->
+            <!-- ============================================ -->
+            
+            <!-- CRÍTICO: No validar esquema estrictamente -->
+            <!-- Cambiar a "update" si necesitas que Hibernate cree nuevas tablas/columnas -->
+            <!-- Cambiar a "create-drop" solo para desarrollo/testing -->
+            <!-- 🟢 FASE VERDE: Temporalmente en "update" para agregar columna puntos -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+
+            <!-- Mostrar SQL en consola (útil para debugging) -->
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.format_sql" value="true"/>
+
+            <!-- Configuración adicional -->
+            <property name="hibernate.use_sql_comments" value="true"/>
+            
+            <!-- Pool de conexiones -->
+            <property name="hibernate.connection.pool_size" value="5"/>
+            
+            <!-- Configuración de caché -->
+            <property name="hibernate.cache.use_second_level_cache" value="false"/>
+        </properties>
+    </persistence-unit>
+</persistence>

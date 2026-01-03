@@ -1,0 +1,11 @@
+# Ignore everything by default
+*
+*/
+
+# Except for src and pom.xml
+!src/
+!pom.xml
+!.gitignore
+
+# Keep directory structure for src
+!src/**
