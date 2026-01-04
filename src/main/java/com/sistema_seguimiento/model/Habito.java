@@ -92,6 +92,29 @@ public class Habito {
         }
     }
     
+    /**
+     * Calcula el porcentaje de progreso del habito
+     * @return Porcentaje de tareas completadas (0-100)
+     */
+    public double calcularProgreso() {
+        if (tareas == null || tareas.isEmpty()) {
+            return 0.0;
+        }
+        long tareasCompletadas = tareas.stream().filter(Tarea::isCompletada).count();
+        return (tareasCompletadas * 100.0) / tareas.size();
+    }
+    
+    /**
+     * Obtiene el numero de tareas completadas
+     * @return Cantidad de tareas completadas
+     */
+    public int getTareasCompletadas() {
+        if (tareas == null) {
+            return 0;
+        }
+        return (int) tareas.stream().filter(Tarea::isCompletada).count();
+    }
+    
     @Override
     public String toString() {
         return "Habito{" +

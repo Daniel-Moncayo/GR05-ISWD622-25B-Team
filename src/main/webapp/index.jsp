@@ -121,16 +121,22 @@
         <div class="section-divider"></div>
         
         <div class="dashboard-grid">
+            <a href="${pageContext.request.contextPath}/establecer-habito" class="dashboard-card card-habito">
+                <div class="card-icon">➕</div>
+                <div class="card-title">Establecer Hábito</div>
+                <div class="card-description">Crea un nuevo hábito con tareas específicas y empieza a construir tu rutina ideal.</div>
+            </a>
+            
+            <a href="${pageContext.request.contextPath}/visualizar-progreso" class="dashboard-card card-seguimiento">
+                <div class="card-icon">📊</div>
+                <div class="card-title">Visualizar Progreso</div>
+                <div class="card-description">Monitorea tu progreso con estadísticas detalladas. Visualiza el avance de cada hábito y sus tareas.</div>
+            </a>
+            
             <a href="${pageContext.request.contextPath}/controlador-habitos?action=registrar" class="dashboard-card card-habito">
                 <div class="card-icon">✅</div>
                 <div class="card-title">Registrar Hábito Diario</div>
                 <div class="card-description">Marca tus hábitos cumplidos del día. La consistencia es la clave del éxito en la formación de hábitos.</div>
-            </a>
-            
-            <a href="${pageContext.request.contextPath}/controlador-habitos?action=view" class="dashboard-card card-seguimiento">
-                <div class="card-icon">📊</div>
-                <div class="card-title">Vista de Seguimiento</div>
-                <div class="card-description">Monitorea tu progreso con estadísticas detalladas. Visualiza rachas, porcentajes de éxito y más.</div>
             </a>
         </div>
         
